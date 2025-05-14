@@ -1,8 +1,11 @@
-const username = 'alvluann';
-const container = document.getElementById('projects-container');
-const toggle = document.getElementById('theme-toggle');
-const navLinks = document.querySelectorAll('.nav-link');
-const sections = document.querySelectorAll('section');
+// js/main.js
+const username    = 'alvluann';
+const container   = document.getElementById('projects-container');
+const toggle      = document.getElementById('theme-toggle');
+const menuToggle  = document.getElementById('menu-toggle');
+const navList     = document.querySelector('.nav-list');
+const navLinks    = document.querySelectorAll('.nav-link');
+const sections    = document.querySelectorAll('section');
 
 async function fetchRepos() {
   try {
@@ -11,8 +14,6 @@ async function fetchRepos() {
     const repos = await res.json();
     const filtered = repos.filter(r => !r.fork);
     displayProjects(filtered);
-    initLanguageChart(filtered);
-    initSkillsChart();
   } catch (e) {
     container.innerHTML = '<p>Erro ao carregar projetos.</p>';
     console.error(e);
@@ -38,48 +39,38 @@ function displayProjects(list) {
   });
 }
 
-function initSkillsChart() {
-  const skillEls = document.querySelectorAll('.skill-card');
-  const labels = [];
-  const data = [];
-  skillEls.forEach(el => {
-    labels.push(el.querySelector('.skill-name').innerText);
-    data.push(Number(el.dataset.skill));
-  });
-  new Chart(document.getElementById('skillsChart'), {
-    type: 'doughnut',
-    data: { labels, datasets: [{ data, backgroundColor: ['#FF6384','#36A2EB','#FFCE56','#4BC0C0','#9966FF'] }] },
-    options: { responsive:true, plugins:{ legend:{ position:'bottom' } } }
-  });
-}
-
-function initLanguageChart(repos) {
-  const langCount = {};
-  repos.forEach(r => {
-    if (r.language) langCount[r.language] = (langCount[r.language] || 0) + 1;
-  });
-  new Chart(document.getElementById('langChart'), {
-    type: 'bar',
-    data: { labels: Object.keys(langCount), datasets: [{ label: 'Repositórios', data: Object.values(langCount), backgroundColor: '#58a6ff' }] },
-    options: { responsive:true, scales:{ y:{ beginAtZero:true } } }
-  });
-}
-
 document.addEventListener('DOMContentLoaded', () => {
   fetchRepos();
-  const saved = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+  // tema
+  const saved = localStorage.getItem('theme') ||
+                (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   document.documentElement.className = saved;
   toggle.addEventListener('click', () => {
     const next = document.documentElement.className === 'light' ? 'dark' : 'light';
     document.documentElement.className = next;
     localStorage.setItem('theme', next);
-    toggle.innerHTML = next === 'light' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+    toggle.innerHTML = next === 'light'
+      ? '<i class="fas fa-moon"></i>'
+      : '<i class="fas fa-sun"></i>';
   });
+
+  // menu mobile
+  menuToggle.addEventListener('click', () => {
+    navList.classList.toggle('open');
+    menuToggle.innerHTML = navList.classList.contains('open')
+      ? '<i class="fas fa-times"></i>'
+      : '<i class="fas fa-bars"></i>';
+  });
+
+  // scroll spy
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === `#${entry.target.id}`));
+        navLinks.forEach(a =>
+          a.classList.toggle('active', a.getAttribute('href') === `#${entry.target.id}`)
+        );
       }
     });
   }, { threshold: 0.3 });

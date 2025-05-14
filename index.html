@@ -1,3 +1,5 @@
+<!-- index.html -->
+<!DOCTYPE html>
 <html lang="pt-BR" class="light">
 <head>
   <meta charset="UTF-8">
@@ -5,40 +7,48 @@
   <meta name="description" content="Portfólio de Luan Alves Vieira, desenvolvedor full-stack.">
   <title>Portfólio — Luan Alves Vieira</title>
   <link rel="icon" href="assets/favicon.ico">
+
+  <!-- preconnect para Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <nav id="navbar" data-aos="fade-down">
+    <button id="menu-toggle" aria-label="Abrir menu"><i class="fas fa-bars"></i></button>
     <div class="container nav-container">
-      <a href="#home" class="logo"><i class="fas fa-code"></i> Luan Alves Vieira</a>
+      <a href="#home" class="logo"><i class="fas fa-user-tie"></i> Luan Alves Vieira</a>
       <ul class="nav-list">
-        <li><a href="#home" class="nav-link active"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="#home" class="nav-link active" aria-current="page"><i class="fas fa-home"></i> Home</a></li>
         <li><a href="#about" class="nav-link"><i class="fas fa-user"></i> Sobre</a></li>
         <li><a href="#skills" class="nav-link"><i class="fas fa-chart-bar"></i> Habilidades</a></li>
-        <li><a href="#stats" class="nav-link"><i class="fas fa-chart-pie"></i> Estatísticas</a></li>
         <li><a href="#projects" class="nav-link"><i class="fas fa-project-diagram"></i> Projetos</a></li>
         <li><a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> Contato</a></li>
       </ul>
-      <button id="theme-toggle" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button>
+      <button id="theme-toggle" aria-label="Alternar tema"><i class="fas fa-moon"></i></button>
     </div>
   </nav>
+
   <header id="home" class="hero">
     <div class="hero-overlay"></div>
     <div class="hero-content container" data-aos="zoom-in">
-      <img src="assets/foto.jpg" alt="Foto de perfil de Luan Alves Vieira" class="avatar">
+      <img src="assets/foto.jpg" alt="Foto de perfil de Luan Alves Vieira" class="avatar" loading="lazy">
       <h1>Olá, eu sou Luan Alves Vieira</h1>
       <p>Desenvolvedor Full-Stack | Transformando ideias em código</p>
       <a href="#projects" class="btn"><i class="fas fa-rocket"></i> Ver Projetos</a>
     </div>
   </header>
+
   <main>
     <section id="about" class="reveal container" data-aos="fade-up">
       <h2><i class="fas fa-info-circle"></i> Sobre Mim</h2>
-      <p>Sou de 2002, estudo Engenharia da Computação, tenho experiência com BackEnd e FrontEnd, com java sendo meu ponto forte. Trabalhei por 2 anos com desenvolvimento de web na prefeitura Criando um site para o setor de direito, facilitando todo o trabalho para o usuário.</p>
+      <p>Sou de 2002, estudo Engenharia da Computação, tenho experiência com BackEnd e FrontEnd, com Java sendo meu ponto forte. Trabalhei por 2 anos com desenvolvimento de web na prefeitura criando um site para o setor de direito, facilitando todo o trabalho para o usuário.</p>
     </section>
+
     <section id="skills" class="reveal container" data-aos="fade-up">
       <h2><i class="fas fa-cogs"></i> Habilidades</h2>
       <div class="skills-grid">
@@ -84,23 +94,12 @@
         </div>
       </div>
     </section>
-    <section id="stats" class="reveal container" data-aos="fade-up">
-      <h2><i class="fas fa-chart-area"></i> Estatísticas</h2>
-      <div class="stats-grid">
-        <div class="stat-card" data-aos="flip-left">
-          <h3><i class="fas fa-chart-pie"></i> Skills</h3>
-          <canvas id="skillsChart" aria-label="Gráfico de habilidades" role="img"></canvas>
-        </div>
-        <div class="stat-card" data-aos="flip-right">
-          <h3><i class="fas fa-code-branch"></i> Linguagens</h3>
-          <canvas id="langChart" aria-label="Gráfico de linguagens" role="img"></canvas>
-        </div>
-      </div>
-    </section>
+
     <section id="projects" class="reveal container" data-aos="fade-up">
       <h2><i class="fas fa-project-diagram"></i> Projetos</h2>
       <div id="projects-container"></div>
     </section>
+
     <section id="contact" class="reveal container" data-aos="fade-up">
       <h2><i class="fas fa-envelope"></i> Contato</h2>
       <p><i class="fas fa-at"></i> <a href="mailto:luan18.avieira@gmail.com">luan18.avieira@gmail.com</a></p>
@@ -109,12 +108,18 @@
       <p><i class="fab fa-linkedin"></i> <a href="https://linkedin.com/in/luan-alves-vieira-030b071ab">linkedin.com/in/luan-alves-vieira-030b071ab</a></p>
     </section>
   </main>
+
   <footer class="container" data-aos="fade-up">
     <p>&copy; 2025 Luan Alves Vieira</p>
   </footer>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  <script src="js/main.js"></script>
-  <script>AOS.init({ duration:800, once:true });</script>
+
+  <!-- scripts -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script defer src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      AOS.init({ duration:800, once:true });
+    });
+  </script>
 </body>
 </html>
