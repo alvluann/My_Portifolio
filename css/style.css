@@ -115,9 +115,25 @@ nav {
   transition: width 0.3s;
 }
 
-.nav-link:hover::after,
+.nav-link::after {
+  width: 0;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
 .nav-link.active::after {
   width: 100%;
+  background: var(--accent2);
+}
+
+.nav-link.active {
+  color: var(--accent2);
+}
+
+section, header {
+  scroll-margin-top: 80px; /* altura da navbar + margem extra */
 }
 
 #theme-toggle,
@@ -305,21 +321,24 @@ footer {
   }
   .nav-list {
     position: fixed;
-    top: 0; left: -100%;
-    width: 70%;
-    height: 100%;
-    background: var(--card-bg);
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--bg);
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 2rem;
-    gap: 1.5rem;
-    transition: left var(--transition);
+    gap: 2rem;
+    transform: translateX(-100%);
+    transition: transform var(--transition);
     z-index: 200;
   }
   .nav-list.open {
-    left: 0;
+    transform: translateX(0);
   }
   .nav-list li {
-    margin-bottom: 1rem;
+    margin: 0;
   }
   nav {
     box-shadow: none;
@@ -479,3 +498,45 @@ footer {
   margin-top: 4rem;
   padding-top: 2rem;
 }
+
+.skill-card::after {
+  content: attr(data-skill) '%';
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Overlay para fundo escuro ao abrir menu */
+ #overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.5);
+    z-index: 150;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  #overlay.active {
+    display: block;
+    opacity: 1;
+  }
+
+.hero-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  section h2 {
+    font-size: 2rem;
+  }
