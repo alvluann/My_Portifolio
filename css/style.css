@@ -1,10 +1,9 @@
-/* css/style.css */
 :root {
   --bg: #ffffff;
   --bg-rgb: 255,255,255;
   --text: #333333;
-  --accent: #0366d6;
-  --accent2: #ff6b6b;
+  --accent: #ae58ff;
+  --accent2: #4d2870;
   --card-bg: #f9f9f9;
   --border: #e0e0e0;
   --transition: 0.4s;
@@ -14,8 +13,8 @@ html.dark {
   --bg: #121212;
   --bg-rgb: 18,18,18;
   --text: #eeeeee;
-  --accent: #58a6ff;
-  --accent2: #ff7979;
+  --accent: #ae58ff;
+  --accent2: #4d2870;
   --card-bg: #1e1e1e;
   --border: #333333;
 }
@@ -335,4 +334,148 @@ footer {
   section h2 {
     font-size: 2rem;
   }
+}
+
+.avatar {
+  display: block;                 
+  width: 160px;                    
+  height: 160px;
+  border-radius: 50%;              
+  object-fit: cover;              
+  border: 4px solid var(--accent); 
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  margin: 0 auto 1.5rem;           
+  transition: transform var(--transition);
+}
+
+.avatar:hover {
+  transform: scale(1.05);          
+}
+
+
+.contact-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.contact-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;               /* espaçamento uniforme entre itens */
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.75rem;           /* leve aumento para “respirar” */
+  text-align: center;
+  text-decoration: none;
+  color: var(--text);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.contact-card i {
+  font-size: 2rem;
+  color: var(--accent);
+}
+
+.contact-card .card-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0;                
+}
+
+
+.contact-card .card-info {
+  font-size: 0.95rem;
+  line-height: 1.4;           /* melhora legibilidade */
+  margin: 0;                  /* sem margem extra */
+  word-break: break-all;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 0.75rem 0;
+  line-height: 1.3;
+  letter-spacing: 0.5px;
+}
+
+/* parágrafos com margem inferior consistente */
+p {
+  margin: 0 0 1.25rem 0;
+  line-height: 1.6;
+}
+
+/* Hero Title e descrição */
+.hero-content h1 {
+  margin-bottom: 1rem;    /* mais “respiro” abaixo do H1 */
+  font-size: 2.8rem;
+}
+
+.hero-content p {
+  margin-bottom: 1.5rem;  /* espaço entre texto e botão */
+}
+
+/* Seção: títulos de seção */
+section h2 {
+  margin-bottom: 1rem;  /* separa bem do conteúdo subsequente */
+  font-size: 2.4rem;
+}
+
+/* Cards de habilidade */
+.skill-card .skill-name {
+  margin-top: 0.75rem;     /* afasta melhor do ícone */
+  line-height: 1.4;
+}
+
+/* Cards de projeto */
+.project-card h3 {
+  margin-bottom: 0.50rem;  /* espaço entre título e descrição */
+  line-height: 1.3;
+}
+
+/* Botão em cards de projeto */
+.project-card .btn {
+  margin-top: 1rem;        /* mantém consistência com textos */
+}
+
+/* Cards de contato (título e info) */
+.contact-card .card-title {
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.contact-card .card-info {
+  margin: 0;               /* já definido globalmente */
+  line-height: 1.5;
+}
+
+/* === Espaçamento entre seções principais === */
+section {
+  padding: 4rem 0;           /* 4rem em cima e embaixo de cada seção */
+}
+
+/* Se preferir separar também o header do próximo bloco */
+.hero {
+  margin-bottom: 4rem;
+}
+
+/* Espaçamento interno dos containers de grid */
+.skills-grid,
+.contact-cards,
+#projects-container {
+  margin-top: 2rem;          /* espaço antes de iniciar o grid */
+  margin-bottom: 2rem;       /* espaço após o grid */
+}
+
+/* Separação antes do footer */
+footer {
+  margin-top: 4rem;
+  padding-top: 2rem;
 }
