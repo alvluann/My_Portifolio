@@ -24,17 +24,19 @@ async function fetchRepos() {
 }
 
 function displayProjects(list) {
-  container.innerHTML = "";
-  list.forEach((repo) => {
-    const card = document.createElement("div");
-    card.className = "project-card";
+  container.innerHTML = '';
+  list.forEach(repo => {
+    const card = document.createElement('div');
+    card.className = 'project-card';
+    card.setAttribute('data-lang', repo.language || 'Outro');
+
     card.innerHTML = `
       <h3>${repo.name}</h3>
-      <p>${repo.description || "Sem descrição"}</p>
+      <p>${repo.description || 'Sem descrição'}</p>
       <div class="repo-info">
         <span><i class="fas fa-star"></i> ${repo.stargazers_count}</span>
         <span><i class="fas fa-code-branch"></i> ${repo.forks_count}</span>
-        <span><i class="fas fa-circle"></i> ${repo.language || "—"}</span>
+        <span><i class="fas fa-circle"></i> ${repo.language || '—'}</span>
       </div>
       <a href="${repo.html_url}" target="_blank" class="btn">Ver no GitHub</a>
     `;
@@ -44,6 +46,7 @@ function displayProjects(list) {
 
 document.addEventListener("DOMContentLoaded", () => {
   fetchRepos();
+
 
   // tema
   const saved =
@@ -106,3 +109,5 @@ const observer = new IntersectionObserver(
 sections.forEach(section => observer.observe(section));
 } 
 );
+
+
