@@ -82,7 +82,7 @@
           class="avatar"
           loading="lazy"
         />
-        <h1>Olá, eu sou Luan Alves Vieira</h1>
+        <h1><span id="typewriter"></span><span class="cursor">|</span></h1>
         <p>Desenvolvedor Full-Stack | Transformando ideias em código</p>
         <a href="assets/cv-luan-vieira.pdf" download class="btn">
           <i class="fas fa-file-download"></i> Baixar Currículo
@@ -210,5 +210,37 @@
         AOS.init({ duration: 800, once: true });
       });
     </script>
+    <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const element = document.getElementById("typewriter");
+    const texts = ["Luan Alves Vieira", "Desenvolvedor Full-Stack", "Engenheiro da Computação"];
+    let textIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function typeEffect() {
+      const currentText = texts[textIndex];
+      const visibleText = currentText.substring(0, charIndex);
+      element.textContent = visibleText;
+
+      if (!isDeleting && charIndex < currentText.length) {
+        charIndex++;
+        setTimeout(typeEffect, 100);
+      } else if (isDeleting && charIndex > 0) {
+        charIndex--;
+        setTimeout(typeEffect, 50);
+      } else {
+        isDeleting = !isDeleting;
+        if (!isDeleting) {
+          textIndex = (textIndex + 1) % texts.length;
+        }
+        setTimeout(typeEffect, 1000);
+      }
+    }
+
+    typeEffect();
+  });
+</script>
+
   </body>
 </html>

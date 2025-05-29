@@ -610,3 +610,16 @@ html {
     opacity: 0.6;
   }
 }
+
+.cursor {
+  display: inline-block;
+  margin-left: 2px;
+  color: #ae58ff;
+  animation: blink 0.7s steps(1) infinite;
+  font-weight: bold;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
