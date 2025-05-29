@@ -639,9 +639,9 @@ html {
   position: absolute;
   width: 100px;
   height: 2px;
-  background: linear-gradient(-45deg, #5f91ff, transparent);
+  background: linear-gradient(-45deg, #f7f200, transparent);
   border-radius: 999px;
-  filter: drop-shadow(0 0 6px #699bff);
+  filter: drop-shadow(0 0 6px #d9ff00);
   animation: tail 3s ease-in-out infinite, shooting 3s ease-in-out infinite;
 }
 
